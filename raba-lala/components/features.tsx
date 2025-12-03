@@ -1,5 +1,6 @@
 import React from "react";
 import { Mic, ArrowRight, Icon } from "lucide-react";
+import { Container } from "./container";
 
 const FEATURES = [
   {
@@ -90,7 +91,7 @@ const ZapIcon = () => (
 
 export default function VoiceFeaturesSection() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <Container as="section" className="py-20">
       {/* Header */}
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
@@ -179,6 +180,6 @@ export default function VoiceFeaturesSection() {
           </div>
         ))}
       </div>
-    </section>
+    </Container>
   );
 }

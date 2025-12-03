@@ -39,139 +39,94 @@ export default function SmoothImageCarousel() {
   const getNextIndex = () => (activeIndex + 1) % CAROUSEL_IMAGES.length
 
   return (
-    <div className="w-full min-h-screen bg-background flex items-center justify-center p-8">
-      <div className="w-full max-w-7xl">
-        {/* Carousel Container */}
-        <div className="relative flex items-center gap-4 overflow-visible">
-          {/* Main Featured Image */}
-          <div className="relative w-[692px] h-[390px] group">
-            <div
-              className="absolute inset-0 rounded-[32px] overflow-hidden shadow-2xl transition-all duration-600 ease-out"
+    <div className="w-full overflow-hidden">
+      {/* Carousel Container */}
+      <div className="relative flex flex-row items-stretch gap-2 sm:gap-3 md:gap-4">
+        {/* Main Featured Image */}
+        <div className="relative w-[55%] sm:w-[58%] h-[180px] sm:h-[250px] md:h-[320px] lg:h-[400px] group">
+          <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl">
+            <Image
+              key={`main-${CAROUSEL_IMAGES[activeIndex].id}`}
+              src={CAROUSEL_IMAGES[activeIndex].url || "/placeholder.svg"}
+              alt={CAROUSEL_IMAGES[activeIndex].alt}
+              fill
+              className="object-cover w-full h-full"
               style={{
-                clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 80px), calc(100% - 80px) 100%, 0 100%)",
-              }}
-            >
-              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-[32px]">
-                <Image
-                  key={`main-${CAROUSEL_IMAGES[activeIndex].id}`}
-                  src={CAROUSEL_IMAGES[activeIndex].url || "/placeholder.svg"}
-                  alt={CAROUSEL_IMAGES[activeIndex].alt}
-                  fill
-                  className="object-cover w-full h-full"
-                  style={{
-                    animation: isAnimating ? "fadeIn 0.6s ease-out" : "none",
-                    objectPosition: "center",
-                  }}
-                />
-              </div>
-
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-
-            {/* Arrow Button */}
-            <button
-              onClick={handleNext}
-              disabled={isAnimating}
-              className="absolute bottom-0 right-0 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 disabled:cursor-not-allowed z-10"
-              style={{
-                transform: "translate(-24px, -24px)",
-              }}
-              aria-label="Next image"
-            >
-              <ArrowRight size={24} strokeWidth={2.5} />
-            </button>
-
-            {/* Purple border accent */}
-            <div
-              className="absolute inset-0 rounded-[32px] pointer-events-none"
-              style={{
-                clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 80px), calc(100% - 80px) 100%, 0 100%)",
-                border: "3px solid rgba(147, 51, 234, 0.3)",
+                animation: isAnimating ? "fadeIn 0.6s ease-out" : "none",
               }}
             />
           </div>
 
-          {/* Side Images */}
-          <div className="flex gap-4 w-[42%] h-[500px]">
-            {/* Left Side Image */}
-            <div
-              className="relative flex-1 rounded-[32px]  w-[239px] h-[410px] mt-12 overflow-hidden shadow-xl cursor-pointer hover:scale-[1.02] transition-all duration-300"
-              onClick={() => {
-                if (isAnimating) return
-                setIsAnimating(true)
-                setActiveIndex(getPrevIndex())
-                setTimeout(() => setIsAnimating(false), 600)
-              }}
-            >
-              <img
-                key={`prev-${CAROUSEL_IMAGES[getPrevIndex()].id}`}
-                src={CAROUSEL_IMAGES[getPrevIndex()].url || "/placeholder.svg"}
-                alt={CAROUSEL_IMAGES[getPrevIndex()].alt}
-                className="w-full h-full object-cover"
-                style={{
-                  objectPosition: "center center",
-                }}
-              />
+          {/* Arrow Button */}
+          <button
+            onClick={handleNext}
+            disabled={isAnimating}
+            className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 lg:bottom-6 lg:right-6 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 text-white p-2 sm:p-3 lg:p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 disabled:cursor-not-allowed z-10"
+            aria-label="Next image"
+          >
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" strokeWidth={2.5} />
+          </button>
+        </div>
 
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                <div className="opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/90 px-4 py-2 rounded-full text-sm font-medium">
-                  View
-                </div>
-              </div>
-            </div>
+        {/* Side Images */}
+        <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 w-[45%] sm:w-[42%] h-[180px] sm:h-[250px] md:h-[320px] lg:h-[400px]">
+          {/* Previous Image */}
+          <div
+            className="relative flex-1 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl cursor-pointer hover:scale-[1.02] transition-all duration-300"
+            onClick={() => {
+              if (isAnimating) return
+              setIsAnimating(true)
+              setActiveIndex(getPrevIndex())
+              setTimeout(() => setIsAnimating(false), 600)
+            }}
+          >
+            <Image
+              key={`prev-${CAROUSEL_IMAGES[getPrevIndex()].id}`}
+              src={CAROUSEL_IMAGES[getPrevIndex()].url || "/placeholder.svg"}
+              alt={CAROUSEL_IMAGES[getPrevIndex()].alt}
+              fill
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-            {/* Right Side Image */}
-            <div
-              className="relative flex-1 rounded-[32px] w-[239px] h-[410px] mt-12 overflow-hidden shadow-xl cursor-pointer hover:scale-[1.02] transition-all duration-300"
-              onClick={() => {
-                if (isAnimating) return
-                setIsAnimating(true)
-                setActiveIndex(getNextIndex())
-                setTimeout(() => setIsAnimating(false), 600)
-              }}
-            >
-              <Image
-                key={`next-${CAROUSEL_IMAGES[getNextIndex()].id}`}
-                src={CAROUSEL_IMAGES[getNextIndex()].url || "/placeholder.svg"}
-                alt={CAROUSEL_IMAGES[getNextIndex()].alt}
-                width={400}
-                height={500}
-                className="w-full h-full object-cover"
-                style={{
-                  objectPosition: "center center",
-                }}
-              />
-
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                <div className="opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/90 px-4 py-2 rounded-full text-sm font-medium">
-                  View
-                </div>
-              </div>
-            </div>
+          {/* Next Image */}
+          <div
+            className="relative flex-1 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl cursor-pointer hover:scale-[1.02] transition-all duration-300"
+            onClick={() => {
+              if (isAnimating) return
+              setIsAnimating(true)
+              setActiveIndex(getNextIndex())
+              setTimeout(() => setIsAnimating(false), 600)
+            }}
+          >
+            <Image
+              key={`next-${CAROUSEL_IMAGES[getNextIndex()].id}`}
+              src={CAROUSEL_IMAGES[getNextIndex()].url || "/placeholder.svg"}
+              alt={CAROUSEL_IMAGES[getNextIndex()].alt}
+              fill
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
+      </div>
 
-        {/* Indicator Dots */}
-        <div className="flex justify-center gap-2 mt-8">
-          {CAROUSEL_IMAGES.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => {
-                if (isAnimating || idx === activeIndex) return
-                setIsAnimating(true)
-                setActiveIndex(idx)
-                setTimeout(() => setIsAnimating(false), 600)
-              }}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                idx === activeIndex ? "w-8 bg-orange-500" : "w-2 bg-gray-300 hover:bg-gray-400"
-              }`}
-              aria-label={`Go to image ${idx + 1}`}
-            />
-          ))}
-        </div>
+      {/* Indicator Dots */}
+      <div className="flex justify-center gap-2 mt-4 sm:mt-6 lg:mt-8">
+        {CAROUSEL_IMAGES.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              if (isAnimating || idx === activeIndex) return
+              setIsAnimating(true)
+              setActiveIndex(idx)
+              setTimeout(() => setIsAnimating(false), 600)
+            }}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              idx === activeIndex ? "w-8 bg-orange-500" : "w-2 bg-gray-300 hover:bg-gray-400"
+            }`}
+            aria-label={`Go to image ${idx + 1}`}
+          />
+        ))}
       </div>
 
       <style jsx>{`

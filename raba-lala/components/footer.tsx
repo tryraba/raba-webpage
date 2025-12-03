@@ -7,6 +7,7 @@ import {
   Twitter,
 } from "lucide-react";
 import Image from "next/image";
+import { Container } from "./container";
 
 const FOOTER_SECTIONS = [
   {
@@ -64,7 +65,7 @@ export default function FooterCTASection() {
     <>
       {/* CTA Section */}
       <section className="bg-orange-500 text-white py-20">
-        <div className="max-w-7xl mx-auto px-6">
+        <Container>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -74,18 +75,32 @@ export default function FooterCTASection() {
                 Join thousands already sending money, paying bills, and
                 recharging — just by speaking.
               </p>
-              <button className="flex items-center gap-3 bg-black text-white py-2 px-4 rounded-lg">
-                <Image
-                  src="/image 6.png"
-                  alt="Google Play Logo"
-                  width={32}
-                  height={32}
-                />
-                <div className="text-left text-sm leading-tight">
-                  <span className="text-xs">GET IT ON</span> <br />
-                  <span className="font-medium text-base">Google Play</span>
-                </div>
-              </button>{" "}
+              <div className="flex flex-row max-sm:flex-row  gap-4 w-fit">
+                <button className="flex items-center gap-3 bg-black text-white py-2 px-4 rounded-lg">
+                  <Image
+                    src="/apple.svg"
+                    alt="Google Play Logo"
+                    width={32}
+                    height={32}
+                  />
+                  <div className="text-left text-sm leading-tight">
+                    <span className="text-xs">GET IT ON</span> <br />
+                    <span className="font-medium text-base">APP STORE</span>
+                  </div>
+                </button>
+                <button className="flex items-center gap-3 bg-black text-white py-2 px-4 rounded-lg">
+                  <Image
+                    src="/image 6.png"
+                    alt="Google Play Logo"
+                    width={32}
+                    height={32}
+                  />
+                  <div className="text-left text-sm leading-tight">
+                    <span className="text-xs">GET IT ON</span> <br />
+                    <span className="font-medium text-base">Google Play</span>
+                  </div>
+                </button>
+              </div>{" "}
             </div>
             <div className="relative flex justify-center items-center">
               <div className="relative">
@@ -101,12 +116,12 @@ export default function FooterCTASection() {
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Footer */}
       <footer className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
+        <Container>
           <div className="grid grid-cols-2 md:grid-cols-6 gap-10 mb-12">
             {/* Brand Column */}
             <div className="col-span-2 space-y-2">
@@ -222,7 +237,7 @@ export default function FooterCTASection() {
               Bank.
             </p>
           </div>
-        </div>
+        </Container>
       </footer>
     </>
   );

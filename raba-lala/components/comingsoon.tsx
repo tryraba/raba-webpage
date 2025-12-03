@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Mic } from "lucide-react";
 import Image from "next/image";
+import { Container } from "./container";
 
 const LANGUAGES = [
   { id: "hausa", label: "Hausa", text: "Raba, aika N5,000 ga Aisha." },
@@ -102,7 +103,7 @@ export default function LanguageSelectorSection() {
   );
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <Container as="section" className="py-20">
       {/* Header */}
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-2 mb-4">
@@ -241,6 +242,6 @@ export default function LanguageSelectorSection() {
           }
         }
       `}</style>
-    </section>
+    </Container>
   );
 }
