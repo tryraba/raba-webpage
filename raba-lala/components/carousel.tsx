@@ -6,17 +6,17 @@ import Image from "next/image"
 const CAROUSEL_IMAGES = [
   {
     id: 1,
-    url: "/subtract.svg",
+    url: "/Rectangle60.svg",
     alt: "Person in marketplace",
   },
   {
     id: 2,
-    url: "/business.svg",
+    url: "/Rectangle80.svg",
     alt: "Business owner",
   },
   {
     id: 3,
-    url: "/alata.svg",
+    url: "/Rectangle79.svg",
     alt: "Market vendor",
   },
 ]
