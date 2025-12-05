@@ -45,7 +45,7 @@ const Content = () => {
                     src="/microphone.svg"
                     alt="Microphone Icon"
                     fill
-                    object-contain
+                    className="object-contain"
                   />
                 </div>
                 <span className="text-xs sm:text-sm font-medium text-gray-800 ">
