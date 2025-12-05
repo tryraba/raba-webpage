@@ -210,7 +210,7 @@ export default function LanguageSelectorSection() {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="w-full px-6 py-4 pr-28 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-6 py-4 pr-36 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder:text-gray-500 placeholder:font-semibold"
               />
               <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
                 Join Waitlist{" "}
