@@ -8,33 +8,33 @@ export const metadata: Metadata = {
   title: "Become a Raba Field Agent",
 
   description:
-    "Join Raba as a Field Agent and earn weekly commissions by helping people in your local community send money and access simple financial services.",
+    "Join RabaPay as a Field Agent and earn weekly commissions by helping people in your local community send money and access simple financial services.",
 
   keywords: [
-    "Raba Field Agent",
-    "Become a Raba Agent",
-    "Raba agent registration",
+    "RabaPay Field Agent",
+    "Become a RabaPay Agent",
+    "RabaPay agent registration",
     "Fintech agent Nigeria",
     "POS agent Nigeria",
     "Earn commissions as an agent",
     "Field agent jobs Nigeria",
-    "Raba Pay agents",
+    "RabaPay agents",
     "Mobile banking agents",
     "Voice banking Nigeria",
   ],
 
   openGraph: {
-    title: "Become a Raba Field Agent | Earn Weekly Commissions",
+    title: "Become a RabaPay Field Agent | Earn Weekly Commissions",
     description:
       "Join Raba’s nationwide network of field agents. Earn commissions, work in your community, and help people access financial services with ease.",
     url: "https://tryraba.com/field-agent",
-    siteName: "Raba Pay",
+    siteName: "RabaPay",
     images: [
       {
-        url: "https://tryraba.com/og/field-agent-og.jpg",
+        url: "https://tryraba.com/rabapay-og.jpeg",
         width: 1200,
         height: 630,
-        alt: "Become a Raba Field Agent",
+        alt: "Become a RabaPay Field Agent",
       },
     ],
     type: "website",
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Become a Raba Field Agent",
+    title: "Become a RabaPay Field Agent",
     description:
       "Earn weekly commissions by joining Raba as a field agent and helping your local community access financial tools.",
-    images: ["https://tryraba.com/og/field-agent-og.jpg"],
+    images: ["https://tryraba.com/rabapay-og.jpeg"],
   },
 
   alternates: {

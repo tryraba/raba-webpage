@@ -9,10 +9,10 @@ import Teams from "./components/teams";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Raba Pay — Africa’s voice-first digital banking app. Discover our mission, vision, and commitment to empowering customers with fast, secure, and convenient financial services.",
+    "Learn about RabaPay, Africa’s voice-first digital banking app. Discover our mission, vision, and commitment to empowering customers with fast, secure, and convenient financial services.",
   keywords: [
-    "Raba Pay",
-    "About Raba Pay",
+    "RabaPay",
+    "About RabaPay",
     "African fintech app",
     "Voice banking Africa",
     "Digital banking app Nigeria",
@@ -21,27 +21,27 @@ export const metadata: Metadata = {
     "Business banking Africa",
   ],
   openGraph: {
-    title: "About Raba Pay | Africa’s Voice-First Digital Banking App",
+    title: "About RabaPay | Africa’s Voice-First Digital Banking App",
     description:
-      "Discover Raba Pay’s mission, vision, and dedication to providing fast, secure, and innovative financial solutions for individuals and businesses in Africa.",
+      "Discover RabaPay’s mission, vision, and dedication to providing fast, secure, and innovative financial solutions for individuals and businesses in Africa.",
     url: "https://tryraba.com/about",
-    siteName: "Raba Pay",
+    siteName: "RabaPay",
     images: [
       {
-        url: "https://tryraba.com/og/about-og.jpg",
+        url: "https://tryraba.com/rabapay-og.jpeg",
         width: 1200,
         height: 630,
-        alt: "Raba Pay About Us",
+        alt: "RabaPay About Us",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Raba Pay | Africa’s Voice-First Digital Banking App",
+    title: "About RabaPay | Africa’s Voice-First Digital Banking App",
     description:
-      "Learn about Raba Pay’s mission and vision. Fast, secure, and innovative financial services for Africa.",
-    images: ["https://tryraba.com/og/about-og.jpg"],
+      "Learn about RabaPay’s mission and vision. Fast, secure, and innovative financial services for Africa.",
+    images: ["https://tryraba.com/rabapay-og.jpeg"],
   },
   alternates: {
     canonical: "https://tryraba.com/about",

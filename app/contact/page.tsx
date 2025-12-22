@@ -11,31 +11,31 @@ export const metadata: Metadata = {
   title: "Contact Us",
 
   description:
-    "Contact Raba Pay for customer support, business inquiries, feedback or help with your account. We’re always ready to assist you with fast, reliable support.",
+    "Contact RabaPay for customer support, business inquiries, feedback or help with your account. We’re always ready to assist you with fast, reliable support.",
 
   keywords: [
-    "Contact Raba Pay",
-    "Raba Pay support",
+    "Contact RabaPay",
+    "RabaPay support",
     "Raba customer service",
     "Fintech support Nigeria",
     "Contact fintech company",
-    "Raba Pay help",
+    "RabaPay help",
     "Digital banking support",
     "Voice banking support",
   ],
 
   openGraph: {
-    title: "Contact Raba Pay | Customer Support & Help",
+    title: "Contact RabaPay | Customer Support & Help",
     description:
-      "Need help or have questions? Contact Raba Pay for fast customer support, business inquiries, and assistance with your digital banking needs.",
+      "Need help or have questions? Contact RabaPay for fast customer support, business inquiries, and assistance with your digital banking needs.",
     url: "https://tryraba.com/contact",
-    siteName: "Raba Pay",
+    siteName: "RabaPay",
     images: [
       {
-        url: "https://tryraba.com/og/contact-og.jpg",
+        url: "https://tryraba.com/rabapay-og.jpeg",
         width: 1200,
         height: 630,
-        alt: "Contact Raba Pay Support",
+        alt: "Contact RabaPay Support",
       },
     ],
     type: "website",
@@ -43,10 +43,10 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Contact Raba Pay | Customer Support",
+    title: "Contact RabaPay | Customer Support",
     description:
-      "Get in touch with Raba Pay for support, feedback, or business inquiries.",
-    images: ["https://tryraba.com/og/contact-og.jpg"],
+      "Get in touch with RabaPay for support, feedback, or business inquiries.",
+    images: ["https://tryraba.com/rabapay-og.jpeg"],
   },
 
   alternates: {

@@ -40,9 +40,9 @@ export default function CoreBenefits() {
                 <Icon className="w-7 md:w-8 lg:w-10 h-7 md:h-8 lg:h-10 text-raba-orange" />
               </div>
             </div>
-            <h4 className="text-lg md:text-xl font-bold text-center md:text-start text-neutral-black">
+            <h2 className="text-lg md:text-xl font-bold text-center md:text-start text-neutral-black">
               {title}
-            </h4>
+            </h2>
             <p className="text-[#8E8E93] text-center md:text-start text-sm md:text-[15px] leading-relaxed">
               {description}
             </p>
