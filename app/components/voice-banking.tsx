@@ -26,7 +26,7 @@ export default function VoiceBankingSection() {
 
           <p className="text-neutral-black text-base md:text-xl lg:leading-10 font-medium -tracking-[0.25px] mb-2.5 md:mb-5">
             Send money using just your voice, in any language you speak. Raba
-            understands you — no typing, no stress. Just say it and your rent is
+            understands you, no typing, no stress. Just say it and your rent is
             paid instantly.
           </p>
 
