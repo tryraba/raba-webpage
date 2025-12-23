@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const CAROUSEL_IMAGES = [
   {
@@ -25,134 +26,101 @@ export default function SmoothImageCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // Auto-play: advance every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isAnimating) {
+        setIsAnimating(true);
+        setActiveIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
+        setTimeout(() => setIsAnimating(false), 800);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAnimating]);
+
   const handleNext = () => {
     if (isAnimating) return;
 
     setIsAnimating(true);
     setActiveIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
 
-    setTimeout(() => setIsAnimating(false), 600);
+    setTimeout(() => setIsAnimating(false), 800);
   };
-
-  const getPrevIndex = () =>
-    (activeIndex - 1 + CAROUSEL_IMAGES.length) % CAROUSEL_IMAGES.length;
-  const getNextIndex = () => (activeIndex + 1) % CAROUSEL_IMAGES.length;
 
   const tinyBlur =
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZWZhZjgiIC8+PC9zdmc+";
 
   return (
     <div className="w-full overflow-hidden">
-      {/* Carousel Container */}
-      <div className="relative flex flex-col md:flex-row justify-between items-stretch gap-3 sm:gap-3 md:gap-4">
-        {/* Main Featured Image */}
-        <div className="relative w-full lg:w-[55%]  h-[220px] sm:h-[250px] md:h-80 lg:h-[400px] group">
-          <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden">
-            <Image
-              key={`prev-${CAROUSEL_IMAGES[activeIndex].id}`}
-              src={CAROUSEL_IMAGES[activeIndex].url || "/placeholder.svg"}
-              alt={CAROUSEL_IMAGES[activeIndex].alt}
-              fill
-              className="object-cover w-full h-full"
-              placeholder="blur"
-              blurDataURL={tinyBlur}
-              priority={true}
-              sizes="(max-width: 640px) 100vw,
-         (max-width: 768px) 60vw,
-         (max-width: 1024px) 55vw,
-         50vw"
-              style={{
-                animation: isAnimating ? "fadeIn 0.6s ease-out" : "none",
+      {/* Carousel Container - All 3 images in fixed positions */}
+      <div className="relative flex flex-row items-stretch gap-3 sm:gap-4 h-[220px] sm:h-[280px] md:h-[350px] lg:h-[400px]">
+        {CAROUSEL_IMAGES.map((image, idx) => {
+          const isActive = idx === activeIndex;
+          
+          return (
+            <motion.div
+              key={image.id}
+              className="relative rounded-2xl sm:rounded-3xl overflow-hidden"
+              animate={{
+                flex: isActive ? 3 : 1,
               }}
-            />
-          </div>
-
-          {/* Arrow Button */}
-          <button
-            onClick={handleNext}
-            disabled={isAnimating}
-            className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 lg:bottom-6 lg:right-6 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 text-white p-2 sm:p-3 lg:p-4 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 disabled:cursor-not-allowed z-10"
-            aria-label="Next image"
-          >
-            <ArrowRight
-              className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
-              strokeWidth={2.5}
-            />
-          </button>
-        </div>
-
-        {/* Side Images */}
-        <div className="flex w-full lg:w-[45%] gap-2 sm:gap-3 md:gap-4 flex-row">
-          {/* Previous Image */}
-          <div
-            className="relative w-full md:flex-1 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer hover:scale-[1.02] transition-all duration-300"
-            onClick={() => {
-              if (isAnimating) return;
-              setIsAnimating(true);
-              setActiveIndex(getPrevIndex());
-              setTimeout(() => setIsAnimating(false), 600);
-            }}
-          >
-            <Image
-              key={`prev-${CAROUSEL_IMAGES[getPrevIndex()].id}`}
-              src={CAROUSEL_IMAGES[getPrevIndex()].url || "/placeholder.svg"}
-              alt={CAROUSEL_IMAGES[getPrevIndex()].alt}
-              fill
-              className="object-cover w-full h-full"
-              placeholder="blur"
-              blurDataURL={tinyBlur}
-              priority={true}
-              sizes="(max-width: 640px) 100vw,
-         (max-width: 768px) 60vw,
-         (max-width: 1024px) 55vw,
-         50vw"
-              style={{
-                animation: isAnimating ? "fadeIn 0.6s ease-out" : "none",
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+                duration: 0.6,
               }}
-            />
-          </div>
+            >
+              {/* Image */}
+              <Image
+                src={image.url}
+                alt={image.alt}
+                fill
+                className="object-cover"
+                placeholder="blur"
+                blurDataURL={tinyBlur}
+                priority={true}
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 35vw"
+              />
 
-          {/* Next Image */}
-          <div
-            className="relative w-full md:flex-1 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer hover:scale-[1.02] transition-all duration-300 h-[200px] md:h-auto"
-            onClick={() => {
-              if (isAnimating) return;
-              setIsAnimating(true);
-              setActiveIndex(getNextIndex());
-              setTimeout(() => setIsAnimating(false), 600);
-            }}
-          >
-            <Image
-              key={`prev-${CAROUSEL_IMAGES[getNextIndex()].id}`}
-              src={CAROUSEL_IMAGES[getNextIndex()].url || "/placeholder.svg"}
-              alt={CAROUSEL_IMAGES[getNextIndex()].alt}
-              fill
-              className="object-cover w-full h-full"
-              placeholder="blur"
-              blurDataURL={tinyBlur}
-              priority={true}
-              sizes="(max-width: 640px) 100vw,
-         (max-width: 768px) 60vw,
-         (max-width: 1024px) 55vw,
-         50vw"
-              style={{
-                animation: isAnimating ? "fadeIn 0.6s ease-out" : "none",
-              }}
-            />
-          </div>
-        </div>
+              {/* Arrow Button - Only on active image */}
+              {isActive && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  onClick={handleNext}
+                  disabled={isAnimating}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 lg:bottom-6 lg:right-6 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 text-white p-2 sm:p-3 lg:p-4 rounded-full transition-colors duration-300 disabled:cursor-not-allowed z-10"
+                  aria-label="Next image"
+                >
+                  <ArrowRight
+                    className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
+                    strokeWidth={2.5}
+                  />
+                </motion.button>
+              )}
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* Indicator Dots */}
       <div className="flex justify-center gap-2 mt-4 sm:mt-6 lg:mt-8">
         {CAROUSEL_IMAGES.map((_, idx) => (
-          <button
+          <motion.button
             key={idx}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.15, duration: 0.4 }}
             onClick={() => {
               if (isAnimating || idx === activeIndex) return;
               setIsAnimating(true);
               setActiveIndex(idx);
-              setTimeout(() => setIsAnimating(false), 600);
+              setTimeout(() => setIsAnimating(false), 800);
             }}
             className={`h-2 rounded-full transition-all duration-300 ${
               idx === activeIndex
@@ -163,19 +131,6 @@ export default function SmoothImageCarousel() {
           />
         ))}
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: scale(1.05);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-      `}</style>
     </div>
   );
 }
