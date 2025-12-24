@@ -28,7 +28,7 @@ const FOOTER_SECTIONS = [
   {
     title: "Resources",
     links: [
-      { label: "Blog", href: "#" },
+      { label: "Blog", href: "/blog" },
       { label: "User documentation", href: "#" },
     ],
   },
@@ -73,7 +73,7 @@ export default function FooterCTASection() {
               <div className="mt-4 flex gap-4">
                 <button className="flex items-center gap-1.5 md:gap-3 bg-black text-white py-1 px-1.5 md:py-2 md:px-4 rounded-lg">
                   <Image
-                    src="/image 6.png"
+                    src="/icon-google-playstore.png"
                     alt="Google Play Logo"
                     width={32}
                     height={32}
